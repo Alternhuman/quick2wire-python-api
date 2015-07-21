@@ -193,8 +193,8 @@ class Pin(PinAPI):
             f.write(value)
     
     def _pin_path(self, filename=""):
-        return "/sys/devices/soc/3f200000.gpio/gpio/gpio%i/%s" % (self.soc_pin_number, filename)
-    
+        #return "/sys/devices/soc/3f200000.gpio/gpio/gpio%i/%s" % (self.soc_pin_number, filename)
+        return "/sys/class/gpio/gpio%i/%s" % (self.soc_pin_number, filename)
     def __repr__(self):
         return self.__module__ + "." + str(self)
     
@@ -274,8 +274,8 @@ else:
         26: 7
         }
     
-    _pi_gpio_pins = [_pi_header_1_pins[i] for i in [11, 12, 13, 15, 16, 18, 22, 7]]
-    
+    #_pi_gpio_pins = [_pi_header_1_pins[i] for i in [11, 12, 13, 15, 16, 18, 22, 7]]
+    _pi_gpio_pins = [_pi_header_1_pins[i] for i in [11, 13, 15, 19, 21, 23]]
     
     def lookup(pin_mapping, i):
         try:
